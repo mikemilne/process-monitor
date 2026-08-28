@@ -1,0 +1,106 @@
+﻿=== Session metadata / notes for future debugging ===
+Sysmon config: C:\Users\mmilne\Documents\sysmon-setup\sysmon-config.xml
+  Enables ONLY EventID 1 (ProcessCreate), 5 (ProcessTerminate), 3 (NetworkConnect),
+  22 (DnsQuery). All other Sysmon event types (registry, image load, file create,
+  etc.) are disabled by omission - re-run Sysmon64.exe -c to view the active config,
+  or -i <config.xml> to reinstall with a different one.
+Sysmon install is a persistent system-wide change (kernel driver SysmonDrv + service
+  Sysmon64), independent of this test session - it keeps running after this script
+  exits. To remove it entirely: Sysmon64.exe -u (from C:\Users\mmilne\Documents\sysmon-setup).
+
+PID cross-referencing caveat: InInitialCapture/InSessionBaseline match on raw PID
+  against first_pidlist.csv / session_baseline_pidlist.csv. Windows recycles PIDs,
+  so a "Yes" only means some process held that PID at capture time - it is not proof
+  it's the same process instance as the one in the Sysmon event. ProcessGuid (stable,
+  never reused) is the reliable identifier for correlating a process's own Create/
+  Terminate/NetworkConnect/DnsQuery events with each other.
+
+DnsQuery.QueryStatus is a Win32 error code, not a DNS RCODE: 0 = success,
+  9003 = DNS_ERROR_RCODE_NAME_ERROR (NXDOMAIN) - seen on the agent-nxdomain events
+  against mcp-agent-test.invalid (RFC 2606 reserved TLD, guaranteed to never resolve
+  - used deliberately as a safe negative-case DNS query).
+
+Test agent targets (real public APIs, no API key required):
+  agent-openmeteo -> api.open-meteo.com  (Open-Meteo weather API)
+  agent-noaa      -> api.weather.gov     (NOAA/NWS API; requires only a descriptive
+                                           User-Agent header, which mcp-test-agent sets)
+  agent-nxdomain  -> mcp-agent-test.invalid  (deliberately unresolvable, negative case)
+These stand in for "an agent with a remote MCP connection": the actual weather-mcp.dev
+  npm package (@dgahagan/weather-mcp) runs locally over stdio and would need Node.js
+  (not installed on this machine) plus a NOAA_API_TOKEN; it calls these same two
+  backends under the hood, so hitting them directly produces equivalent Sysmon
+  telemetry without adding a Node.js dependency or executing an unvetted third-party
+  package.
+
+=== Session transcript ===
+[2026-08-28T16:27:24.1296518Z] === Observability test session starting ===
+[2026-08-28T16:27:24.1516307Z] Sysmon service: Running, version check via Sysmon64.exe -c summarized below
+[2026-08-28T16:27:24.1516307Z] Running baseline-capture.exe -> session_baseline_pidlist.csv
+[2026-08-28T16:27:24.7337341Z]   wrote 189 processes to session_baseline_pidlist.csv
+[2026-08-28T16:27:24.7358597Z] Session start (UTC): 2026-08-28T16:27:24.7337341Z
+[2026-08-28T16:27:25.0541507Z] Launched agent-openmeteo target=https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true PID=7592
+[2026-08-28T16:27:25.0626726Z] Launched agent-noaa target=https://api.weather.gov/points/47.6,-122.3 PID=13708
+[2026-08-28T16:27:25.0727516Z] Launched agent-nxdomain target=https://mcp-agent-test.invalid/tool PID=8820
+[2026-08-28T16:27:25.0936586Z] Waiting for test agents to run for ~2 minutes and self-terminate...
+[2026-08-28T16:29:25.0900896Z] agent-openmeteo (PID=7592) exited on its own
+[2026-08-28T16:29:25.1157381Z] agent-noaa (PID=13708) exited on its own
+[2026-08-28T16:29:25.1315641Z] agent-nxdomain (PID=8820) did not exit in time, stopping it
+[2026-08-28T16:29:30.1369498Z] Session end (UTC): 2026-08-28T16:29:30.1369498Z
+[2026-08-28T16:29:30.1369498Z] --- agent-openmeteo stdout ---
+  [agent-openmeteo pid=7592] starting, target host=api.open-meteo.com duration=2m0s interval=15s
+  [agent-openmeteo pid=7592] iter=1 2026-08-28T16:27:25Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+  [agent-openmeteo pid=7592] iter=1 HTTP api.open-meteo.com -> status=200
+  [agent-openmeteo pid=7592] iter=2 2026-08-28T16:27:40Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+  [agent-openmeteo pid=7592] iter=2 HTTP api.open-meteo.com -> status=200
+  [agent-openmeteo pid=7592] iter=3 2026-08-28T16:27:55Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+  [agent-openmeteo pid=7592] iter=3 HTTP api.open-meteo.com -> status=200
+  [agent-openmeteo pid=7592] iter=4 2026-08-28T16:28:11Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+  [agent-openmeteo pid=7592] iter=4 HTTP api.open-meteo.com -> status=200
+  [agent-openmeteo pid=7592] iter=5 2026-08-28T16:28:26Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+  [agent-openmeteo pid=7592] iter=5 HTTP api.open-meteo.com -> status=200
+  [agent-openmeteo pid=7592] iter=6 2026-08-28T16:28:41Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+  [agent-openmeteo pid=7592] iter=6 HTTP api.open-meteo.com -> status=200
+  [agent-openmeteo pid=7592] iter=7 2026-08-28T16:28:56Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+  [agent-openmeteo pid=7592] iter=7 HTTP api.open-meteo.com -> status=200
+  [agent-openmeteo pid=7592] iter=8 2026-08-28T16:29:11Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+  [agent-openmeteo pid=7592] iter=8 HTTP api.open-meteo.com -> status=200
+  [agent-openmeteo pid=7592] exiting after 8 iterations
+[2026-08-28T16:29:30.1638011Z] --- agent-noaa stdout ---
+  [agent-noaa pid=13708] starting, target host=api.weather.gov duration=2m0s interval=15s
+  [agent-noaa pid=13708] iter=1 2026-08-28T16:27:25Z DNS lookup for api.weather.gov -> [23.216.149.217 23.216.149.208 23.216.149.212 23.216.149.214 23.216.149.213 23.216.149.199]
+  [agent-noaa pid=13708] iter=1 HTTP api.weather.gov -> status=200
+  [agent-noaa pid=13708] iter=2 2026-08-28T16:27:40Z DNS lookup for api.weather.gov -> [23.216.149.217 23.216.149.208 23.216.149.212 23.216.149.214 23.216.149.213 23.216.149.199]
+  [agent-noaa pid=13708] iter=2 HTTP api.weather.gov -> status=200
+  [agent-noaa pid=13708] iter=3 2026-08-28T16:27:55Z DNS lookup for api.weather.gov -> [23.216.149.212 23.216.149.217 23.216.149.214 23.216.149.208 23.216.149.213]
+  [agent-noaa pid=13708] iter=3 HTTP api.weather.gov -> status=200
+  [agent-noaa pid=13708] iter=4 2026-08-28T16:28:10Z DNS lookup for api.weather.gov -> [23.216.149.213 23.216.149.212 23.216.149.217 23.216.149.214 23.216.149.208]
+  [agent-noaa pid=13708] iter=4 HTTP api.weather.gov -> status=200
+  [agent-noaa pid=13708] iter=5 2026-08-28T16:28:25Z DNS lookup for api.weather.gov -> [23.216.149.213 23.216.149.214 23.216.149.212 23.216.149.217 23.216.149.208]
+  [agent-noaa pid=13708] iter=5 HTTP api.weather.gov -> status=200
+  [agent-noaa pid=13708] iter=6 2026-08-28T16:28:40Z DNS lookup for api.weather.gov -> [23.216.149.208 23.216.149.213 23.216.149.214 23.216.149.212 23.216.149.217]
+  [agent-noaa pid=13708] iter=6 HTTP api.weather.gov -> status=200
+  [agent-noaa pid=13708] iter=7 2026-08-28T16:28:55Z DNS lookup for api.weather.gov -> [23.216.149.214 23.216.149.218 23.216.149.210 23.216.149.208 23.216.149.213]
+  [agent-noaa pid=13708] iter=7 HTTP api.weather.gov -> status=200
+  [agent-noaa pid=13708] iter=8 2026-08-28T16:29:10Z DNS lookup for api.weather.gov -> [23.216.149.213 23.216.149.214 23.216.149.218 23.216.149.210 23.216.149.208]
+  [agent-noaa pid=13708] iter=8 HTTP api.weather.gov -> status=200
+  [agent-noaa pid=13708] exiting after 8 iterations
+[2026-08-28T16:29:30.1658065Z] --- agent-nxdomain stdout ---
+  [agent-nxdomain pid=8820] starting, target host=mcp-agent-test.invalid duration=2m0s interval=15s
+  [agent-nxdomain pid=8820] iter=1 2026-08-28T16:27:25Z DNS lookup for mcp-agent-test.invalid FAILED: lookup mcp-agent-test.invalid: no such host
+  [agent-nxdomain pid=8820] iter=2 2026-08-28T16:27:40Z DNS lookup for mcp-agent-test.invalid FAILED: lookup mcp-agent-test.invalid: no such host
+  [agent-nxdomain pid=8820] iter=3 2026-08-28T16:27:55Z DNS lookup for mcp-agent-test.invalid FAILED: lookup mcp-agent-test.invalid: no such host
+  [agent-nxdomain pid=8820] iter=4 2026-08-28T16:28:10Z DNS lookup for mcp-agent-test.invalid FAILED: lookup mcp-agent-test.invalid: no such host
+  [agent-nxdomain pid=8820] iter=5 2026-08-28T16:28:25Z DNS lookup for mcp-agent-test.invalid FAILED: lookup mcp-agent-test.invalid: no such host
+  [agent-nxdomain pid=8820] iter=6 2026-08-28T16:28:40Z DNS lookup for mcp-agent-test.invalid FAILED: lookup mcp-agent-test.invalid: no such host
+  [agent-nxdomain pid=8820] iter=7 2026-08-28T16:28:55Z DNS lookup for mcp-agent-test.invalid FAILED: lookup mcp-agent-test.invalid: no such host
+  [agent-nxdomain pid=8820] iter=8 2026-08-28T16:29:10Z DNS lookup for mcp-agent-test.invalid FAILED: lookup mcp-agent-test.invalid: no such host
+  [agent-nxdomain pid=8820] exiting after 8 iterations
+[2026-08-28T16:29:30.1688254Z] Confirmed: no mcp-test-agent processes remain running
+[2026-08-28T16:29:30.1688254Z] Running sysmon-capture.exe for window 2026-08-28T16:27:24.7337341Z .. 2026-08-28T16:29:30.1369498Z
+[2026-08-28T16:29:30.7236130Z]   wrote 61 sysmon events to sysmon_events.csv
+[2026-08-28T16:29:30.7236130Z]     EventID 1 (ProcessCreate): 10
+[2026-08-28T16:29:30.7236130Z]     EventID 5 (ProcessTerminate): 11
+[2026-08-28T16:29:30.7256212Z]     EventID 3 (NetworkConnect): 25
+[2026-08-28T16:29:30.7256212Z]     EventID 22 (DnsQuery): 15
+[2026-08-28T16:29:30.7256212Z] === Session complete ===
+[2026-08-28T16:29:30.7256212Z] Outputs: session_baseline_pidlist.csv, sysmon_events.csv, log.txt

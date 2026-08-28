@@ -1,0 +1,18 @@
+[agent-openmeteo pid=7592] starting, target host=api.open-meteo.com duration=2m0s interval=15s
+[agent-openmeteo pid=7592] iter=1 2026-08-28T16:27:25Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+[agent-openmeteo pid=7592] iter=1 HTTP api.open-meteo.com -> status=200
+[agent-openmeteo pid=7592] iter=2 2026-08-28T16:27:40Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+[agent-openmeteo pid=7592] iter=2 HTTP api.open-meteo.com -> status=200
+[agent-openmeteo pid=7592] iter=3 2026-08-28T16:27:55Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+[agent-openmeteo pid=7592] iter=3 HTTP api.open-meteo.com -> status=200
+[agent-openmeteo pid=7592] iter=4 2026-08-28T16:28:11Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+[agent-openmeteo pid=7592] iter=4 HTTP api.open-meteo.com -> status=200
+[agent-openmeteo pid=7592] iter=5 2026-08-28T16:28:26Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+[agent-openmeteo pid=7592] iter=5 HTTP api.open-meteo.com -> status=200
+[agent-openmeteo pid=7592] iter=6 2026-08-28T16:28:41Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+[agent-openmeteo pid=7592] iter=6 HTTP api.open-meteo.com -> status=200
+[agent-openmeteo pid=7592] iter=7 2026-08-28T16:28:56Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+[agent-openmeteo pid=7592] iter=7 HTTP api.open-meteo.com -> status=200
+[agent-openmeteo pid=7592] iter=8 2026-08-28T16:29:11Z DNS lookup for api.open-meteo.com -> [188.40.99.226]
+[agent-openmeteo pid=7592] iter=8 HTTP api.open-meteo.com -> status=200
+[agent-openmeteo pid=7592] exiting after 8 iterations
