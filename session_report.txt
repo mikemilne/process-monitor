@@ -1,0 +1,1501 @@
+# session report generated 2026-08-31T18:42:41Z
+2026-08-31T17:47:37.731Z:9268:process started with command "C:\Users\mmilne\Documents\process-monitor\mcp-test-agent\mcp-test-agent.exe" -name agent-openmeteo -target https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true -duration 2m -interval 15s 
+2026-08-31T17:47:37.736Z:3688:process started with command \??\C:\WINDOWS\system32\conhost.exe 0xffffffff -ForceV1
+2026-08-31T17:47:37.743Z:7112:process started with command "C:\Users\mmilne\Documents\process-monitor\mcp-test-agent\mcp-test-agent.exe" -name agent-noaa -target https://api.weather.gov/points/47.6,-122.3 -duration 2m -interval 15s 
+2026-08-31T17:47:37.751Z:9100:process started with command \??\C:\WINDOWS\system32\conhost.exe 0xffffffff -ForceV1
+2026-08-31T17:47:37.768Z:2956:process started with command "C:\Users\mmilne\Documents\process-monitor\mcp-test-agent\mcp-test-agent.exe" -name agent-nxdomain -target https://mcp-agent-test.invalid/tool -duration 2m -interval 15s 
+2026-08-31T17:47:37.774Z:8648:process started with command \??\C:\WINDOWS\system32\conhost.exe 0xffffffff -ForceV1
+2026-08-31T17:47:37.944Z:7112:TLS handshake completed with 23.216.149.207:443, version=TLS 1.3, cipher_suite=TLS_AES_256_GCM_SHA384, key_exchange_group=X25519Kyber768Draft00, client_random=37ba90801f84475dcb6c376b27dfc91002efc07e357168483adb8d1f1c39c427
+    session keys exchanged (redacted; rerun with -show-key-material to include the raw secret values)
+2026-08-31T17:47:38.033Z:7112:[SENT] HTTPS request GET https://api.weather.gov/points/47.6,-122.3 HTTP/2
+    Headers:
+      user-agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      accept-encoding: gzip
+2026-08-31T17:47:38.128Z:7112:[RECEIVED] HTTPS response 200 for https://api.weather.gov/points/47.6,-122.3
+    Headers:
+      server: nginx/1.28.3
+      content-type: application/geo+json
+      access-control-allow-origin: *
+      access-control-expose-headers: X-Correlation-Id, X-Request-Id, X-Server-Id
+      x-request-id: 01a05867-0268-78e0-9c9a-9d90891be1c6
+      x-correlation-id: 352d8e51
+      x-server-id: vm-bldr-api-ops-app1.ncep.noaa.gov
+      content-encoding: gzip
+      content-length: 1009
+      cache-control: public, max-age=77484, s-maxage=120
+      expires: Tue, 01 Sep 2026 15:19:01 GMT
+      date: Mon, 31 Aug 2026 17:47:37 GMT
+      vary: Accept-Encoding
+      x-edge-request-id: a2877aa1
+      vary: Accept,Feature-Flags,Accept-Language
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+    Body (application/geo+json):
+      {
+        "@context": [
+          "https://geojson.org/geojson-ld/geojson-context.jsonld",
+          {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "s": "https://schema.org/",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#",
+            "geometry": {
+              "@id": "s:GeoCoordinates",
+              "@type": "geo:wktLiteral"
+            },
+            "city": "s:addressLocality",
+            "state": "s:addressRegion",
+            "distance": {
+              "@id": "s:Distance",
+              "@type": "s:QuantitativeValue"
+            },
+            "bearing": {
+              "@type": "s:QuantitativeValue"
+            },
+            "value": {
+              "@id": "s:value"
+            },
+            "unitCode": {
+              "@id": "s:unitCode",
+              "@type": "@id"
+            },
+            "forecastOffice": {
+              "@type": "@id"
+            },
+            "forecastGridData": {
+              "@type": "@id"
+            },
+            "publicZone": {
+              "@type": "@id"
+            },
+            "county": {
+              "@type": "@id"
+            }
+          }
+        ],
+        "id": "https://api.weather.gov/points/47.6,-122.3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3,
+            47.6
+          ]
+        },
+        "properties": {
+          "@id": "https://api.weather.gov/points/47.6,-122.3",
+          "@type": "wx:Point",
+          "cwa": "SEW",
+          "type": "land",
+          "forecastOffice": "https://api.weather.gov/offices/SEW",
+          "gridId": "SEW",
+          "gridX": 126,
+          "gridY": 68,
+          "forecast": "https://api.weather.gov/gridpoints/SEW/126,68/forecast",
+          "forecastHourly": "https://api.weather.gov/gridpoints/SEW/126,68/forecast/hourly",
+          "forecastGridData": "https://api.weather.gov/gridpoints/SEW/126,68",
+          "observationStations": "https://api.weather.gov/gridpoints/SEW/126,68/stations",
+          "relativeLocation": {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -122.3515382,
+                47.6193352
+              ]
+            },
+            "properties": {
+              "city": "Seattle",
+              "state": "WA",
+              "distance": {
+                "unitCode": "wmoUnit:m",
+                "value": 0
+              },
+              "bearing": {
+                "unitCode": "wmoUnit:degree_(angle)",
+                "value": 0
+              }
+            }
+          },
+          "forecastZone": "https://api.weather.gov/zones/forecast/WAZ315",
+          "county": "https://api.weather.gov/zones/county/WAC033",
+          "fireWeatherZone": "https://api.weather.gov/zones/fire/WAZ654",
+          "timeZone": "America/Los_Angeles",
+          "radarStation": "KATX",
+          "astronomicalData": {
+            "sunrise": "2026-08-31T06:27:00-07:00",
+            "sunset": "2026-08-31T19:51:49-07:00",
+            "transit": "2026-08-31T13:09:24-07:00",
+            "civilTwilightBegin": "2026-08-31T05:55:07-07:00",
+            "civilTwilightEnd": "2026-08-31T20:23:42-07:00",
+            "nauticalTwilightBegin": "2026-08-31T05:16:22-07:00",
+            "nauticalTwilightEnd": "2026-08-31T21:02:27-07:00",
+            "astronomicalTwilightBegin": "2026-08-31T04:34:40-07:00",
+            "astronomicalTwilightEnd": "2026-08-31T21:44:09-07:00"
+          },
+          "nwr": {
+            "transmitter": "KHB60",
+            "sameCode": "053033",
+            "areaBroadcast": "https://api.weather.gov/radio/KHB60/broadcast",
+            "pointBroadcast": "https://api.weather.gov/points/47.6,-122.3/radio"
+          }
+        }
+      }
+2026-08-31T17:47:38.145Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:47:38.304Z:9268:TLS handshake completed with 188.40.99.226:443, version=TLS 1.3, cipher_suite=TLS_AES_128_GCM_SHA256, key_exchange_group=x25519, client_random=620037465da1556694c0d9e8a9aec8a438327c3cd64634c750ec4cb638800aab
+    session keys exchanged (redacted; rerun with -show-key-material to include the raw secret values)
+2026-08-31T17:47:38.317Z:9268:[SENT] HTTPS request GET https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true HTTP/1.1
+    Headers:
+      Host: api.open-meteo.com
+      User-Agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      Accept-Encoding: gzip
+2026-08-31T17:47:38.486Z:9268:[RECEIVED] HTTPS response 200 OK for https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true
+    Headers:
+      Date: Mon, 31 Aug 2026 17:47:37 GMT
+      Content-Type: application/json; charset=utf-8
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      Content-Encoding: gzip
+    Body (application/json; charset=utf-8):
+      {
+        "latitude": 47.60265,
+        "longitude": -122.28637,
+        "generationtime_ms": 0.1341104507446289,
+        "utc_offset_seconds": 0,
+        "timezone": "GMT",
+        "timezone_abbreviation": "GMT",
+        "elevation": 93.0,
+        "current_weather_units": {
+          "time": "iso8601",
+          "interval": "seconds",
+          "temperature": "°C",
+          "windspeed": "km/h",
+          "winddirection": "°",
+          "is_day": "",
+          "weathercode": "wmo code"
+        },
+        "current_weather": {
+          "time": "2026-08-31T17:45",
+          "interval": 900,
+          "temperature": 17.7,
+          "windspeed": 8.4,
+          "winddirection": 31,
+          "is_day": 1,
+          "weathercode": 0
+        }
+      }
+2026-08-31T17:47:38.788Z:9268:DNS lookup to "api.open-meteo.com"
+2026-08-31T17:47:38.788Z:9268:DNS api.open-meteo.com resolved to IP address 188.40.99.226
+2026-08-31T17:47:38.788Z:7112:DNS lookup to "api.weather.gov"
+2026-08-31T17:47:38.788Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.213
+2026-08-31T17:47:38.788Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.210
+2026-08-31T17:47:38.788Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.207
+2026-08-31T17:47:38.788Z:7112:DNS lookup to "api.weather.gov"
+2026-08-31T17:47:38.788Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.207
+2026-08-31T17:47:38.788Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.213
+2026-08-31T17:47:38.788Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.210
+2026-08-31T17:47:39.152Z:7112:process "mcp-test-agent.exe" connected to 23.216.149.207/443 with protocol tcp
+2026-08-31T17:47:39.152Z:9268:process "mcp-test-agent.exe" connected to 188.40.99.226/443 with protocol tcp
+2026-08-31T17:47:39.803Z:2956:DNS lookup to "mcp-agent-test.invalid"
+2026-08-31T17:47:40.816Z:3624:DNS lookup to "207.149.216.23.in-addr.arpa."
+2026-08-31T17:47:53.134Z:7112:[SENT] HTTPS request GET https://api.weather.gov/points/47.6,-122.3 HTTP/2
+    Headers:
+      user-agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      accept-encoding: gzip
+2026-08-31T17:47:53.218Z:7112:[RECEIVED] HTTPS response 200 for https://api.weather.gov/points/47.6,-122.3
+    Headers:
+      server: nginx/1.28.3
+      content-type: application/geo+json
+      access-control-allow-origin: *
+      access-control-expose-headers: X-Correlation-Id, X-Request-Id, X-Server-Id
+      x-request-id: 01a05867-0268-78e0-9c9a-9d90891be1c6
+      x-correlation-id: 352d8e51
+      x-server-id: vm-bldr-api-ops-app1.ncep.noaa.gov
+      content-encoding: gzip
+      content-length: 1009
+      cache-control: public, max-age=77469, s-maxage=120
+      expires: Tue, 01 Sep 2026 15:19:01 GMT
+      date: Mon, 31 Aug 2026 17:47:52 GMT
+      vary: Accept-Encoding
+      x-edge-request-id: a288b650
+      vary: Accept,Feature-Flags,Accept-Language
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+    Body (application/geo+json):
+      {
+        "@context": [
+          "https://geojson.org/geojson-ld/geojson-context.jsonld",
+          {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "s": "https://schema.org/",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#",
+            "geometry": {
+              "@id": "s:GeoCoordinates",
+              "@type": "geo:wktLiteral"
+            },
+            "city": "s:addressLocality",
+            "state": "s:addressRegion",
+            "distance": {
+              "@id": "s:Distance",
+              "@type": "s:QuantitativeValue"
+            },
+            "bearing": {
+              "@type": "s:QuantitativeValue"
+            },
+            "value": {
+              "@id": "s:value"
+            },
+            "unitCode": {
+              "@id": "s:unitCode",
+              "@type": "@id"
+            },
+            "forecastOffice": {
+              "@type": "@id"
+            },
+            "forecastGridData": {
+              "@type": "@id"
+            },
+            "publicZone": {
+              "@type": "@id"
+            },
+            "county": {
+              "@type": "@id"
+            }
+          }
+        ],
+        "id": "https://api.weather.gov/points/47.6,-122.3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3,
+            47.6
+          ]
+        },
+        "properties": {
+          "@id": "https://api.weather.gov/points/47.6,-122.3",
+          "@type": "wx:Point",
+          "cwa": "SEW",
+          "type": "land",
+          "forecastOffice": "https://api.weather.gov/offices/SEW",
+          "gridId": "SEW",
+          "gridX": 126,
+          "gridY": 68,
+          "forecast": "https://api.weather.gov/gridpoints/SEW/126,68/forecast",
+          "forecastHourly": "https://api.weather.gov/gridpoints/SEW/126,68/forecast/hourly",
+          "forecastGridData": "https://api.weather.gov/gridpoints/SEW/126,68",
+          "observationStations": "https://api.weather.gov/gridpoints/SEW/126,68/stations",
+          "relativeLocation": {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -122.3515382,
+                47.6193352
+              ]
+            },
+            "properties": {
+              "city": "Seattle",
+              "state": "WA",
+              "distance": {
+                "unitCode": "wmoUnit:m",
+                "value": 0
+              },
+              "bearing": {
+                "unitCode": "wmoUnit:degree_(angle)",
+                "value": 0
+              }
+            }
+          },
+          "forecastZone": "https://api.weather.gov/zones/forecast/WAZ315",
+          "county": "https://api.weather.gov/zones/county/WAC033",
+          "fireWeatherZone": "https://api.weather.gov/zones/fire/WAZ654",
+          "timeZone": "America/Los_Angeles",
+          "radarStation": "KATX",
+          "astronomicalData": {
+            "sunrise": "2026-08-31T06:27:00-07:00",
+            "sunset": "2026-08-31T19:51:49-07:00",
+            "transit": "2026-08-31T13:09:24-07:00",
+            "civilTwilightBegin": "2026-08-31T05:55:07-07:00",
+            "civilTwilightEnd": "2026-08-31T20:23:42-07:00",
+            "nauticalTwilightBegin": "2026-08-31T05:16:22-07:00",
+            "nauticalTwilightEnd": "2026-08-31T21:02:27-07:00",
+            "astronomicalTwilightBegin": "2026-08-31T04:34:40-07:00",
+            "astronomicalTwilightEnd": "2026-08-31T21:44:09-07:00"
+          },
+          "nwr": {
+            "transmitter": "KHB60",
+            "sameCode": "053033",
+            "areaBroadcast": "https://api.weather.gov/radio/KHB60/broadcast",
+            "pointBroadcast": "https://api.weather.gov/points/47.6,-122.3/radio"
+          }
+        }
+      }
+2026-08-31T17:47:53.490Z:9268:[SENT] HTTPS request GET https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true HTTP/1.1
+    Headers:
+      Host: api.open-meteo.com
+      User-Agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      Accept-Encoding: gzip
+2026-08-31T17:47:53.657Z:9268:[RECEIVED] HTTPS response 200 OK for https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true
+    Headers:
+      Date: Mon, 31 Aug 2026 17:47:52 GMT
+      Content-Type: application/json; charset=utf-8
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      Content-Encoding: gzip
+    Body (application/json; charset=utf-8):
+      {
+        "latitude": 47.60265,
+        "longitude": -122.28637,
+        "generationtime_ms": 0.12063980102539062,
+        "utc_offset_seconds": 0,
+        "timezone": "GMT",
+        "timezone_abbreviation": "GMT",
+        "elevation": 93.0,
+        "current_weather_units": {
+          "time": "iso8601",
+          "interval": "seconds",
+          "temperature": "°C",
+          "windspeed": "km/h",
+          "winddirection": "°",
+          "is_day": "",
+          "weathercode": "wmo code"
+        },
+        "current_weather": {
+          "time": "2026-08-31T17:45",
+          "interval": 900,
+          "temperature": 17.7,
+          "windspeed": 8.4,
+          "winddirection": 31,
+          "is_day": 1,
+          "weathercode": 0
+        }
+      }
+2026-08-31T17:47:54.831Z:7112:DNS lookup to "api.weather.gov"
+2026-08-31T17:47:54.831Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.207
+2026-08-31T17:47:54.831Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.210
+2026-08-31T17:47:54.831Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.208
+2026-08-31T17:47:54.831Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.205
+2026-08-31T17:47:54.831Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.215
+2026-08-31T17:47:54.831Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.202
+2026-08-31T17:47:54.831Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.198
+2026-08-31T17:47:54.831Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.213
+2026-08-31T17:48:00.046Z:3384:TLS handshake completed with 52.123.225.99:443, version=TLS 1.3, cipher_suite=TLS_AES_256_GCM_SHA384, key_exchange_group=secp384r1, client_random=1233837e315d0b66b753b99f74cd2b3888079a2007863e285cb74b2603f467af
+    session keys exchanged (redacted; rerun with -show-key-material to include the raw secret values)
+2026-08-31T17:48:01.429Z:3384:process "MpDefenderCoreService.exe" connected to 52.123.225.99/443 with protocol tcp
+2026-08-31T17:48:06.490Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:48:06.490Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:48:08.223Z:7112:[SENT] HTTPS request GET https://api.weather.gov/points/47.6,-122.3 HTTP/2
+    Headers:
+      user-agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      accept-encoding: gzip
+2026-08-31T17:48:08.302Z:7112:[RECEIVED] HTTPS response 200 for https://api.weather.gov/points/47.6,-122.3
+    Headers:
+      server: nginx/1.28.3
+      content-type: application/geo+json
+      access-control-allow-origin: *
+      access-control-expose-headers: X-Correlation-Id, X-Request-Id, X-Server-Id
+      x-request-id: 01a05867-0268-78e0-9c9a-9d90891be1c6
+      x-correlation-id: 352d8e51
+      x-server-id: vm-bldr-api-ops-app1.ncep.noaa.gov
+      content-encoding: gzip
+      content-length: 1009
+      cache-control: public, max-age=77454, s-maxage=120
+      expires: Tue, 01 Sep 2026 15:19:01 GMT
+      date: Mon, 31 Aug 2026 17:48:07 GMT
+      vary: Accept-Encoding
+      x-edge-request-id: a289e015
+      vary: Accept,Feature-Flags,Accept-Language
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+    Body (application/geo+json):
+      {
+        "@context": [
+          "https://geojson.org/geojson-ld/geojson-context.jsonld",
+          {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "s": "https://schema.org/",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#",
+            "geometry": {
+              "@id": "s:GeoCoordinates",
+              "@type": "geo:wktLiteral"
+            },
+            "city": "s:addressLocality",
+            "state": "s:addressRegion",
+            "distance": {
+              "@id": "s:Distance",
+              "@type": "s:QuantitativeValue"
+            },
+            "bearing": {
+              "@type": "s:QuantitativeValue"
+            },
+            "value": {
+              "@id": "s:value"
+            },
+            "unitCode": {
+              "@id": "s:unitCode",
+              "@type": "@id"
+            },
+            "forecastOffice": {
+              "@type": "@id"
+            },
+            "forecastGridData": {
+              "@type": "@id"
+            },
+            "publicZone": {
+              "@type": "@id"
+            },
+            "county": {
+              "@type": "@id"
+            }
+          }
+        ],
+        "id": "https://api.weather.gov/points/47.6,-122.3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3,
+            47.6
+          ]
+        },
+        "properties": {
+          "@id": "https://api.weather.gov/points/47.6,-122.3",
+          "@type": "wx:Point",
+          "cwa": "SEW",
+          "type": "land",
+          "forecastOffice": "https://api.weather.gov/offices/SEW",
+          "gridId": "SEW",
+          "gridX": 126,
+          "gridY": 68,
+          "forecast": "https://api.weather.gov/gridpoints/SEW/126,68/forecast",
+          "forecastHourly": "https://api.weather.gov/gridpoints/SEW/126,68/forecast/hourly",
+          "forecastGridData": "https://api.weather.gov/gridpoints/SEW/126,68",
+          "observationStations": "https://api.weather.gov/gridpoints/SEW/126,68/stations",
+          "relativeLocation": {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -122.3515382,
+                47.6193352
+              ]
+            },
+            "properties": {
+              "city": "Seattle",
+              "state": "WA",
+              "distance": {
+                "unitCode": "wmoUnit:m",
+                "value": 0
+              },
+              "bearing": {
+                "unitCode": "wmoUnit:degree_(angle)",
+                "value": 0
+              }
+            }
+          },
+          "forecastZone": "https://api.weather.gov/zones/forecast/WAZ315",
+          "county": "https://api.weather.gov/zones/county/WAC033",
+          "fireWeatherZone": "https://api.weather.gov/zones/fire/WAZ654",
+          "timeZone": "America/Los_Angeles",
+          "radarStation": "KATX",
+          "astronomicalData": {
+            "sunrise": "2026-08-31T06:27:00-07:00",
+            "sunset": "2026-08-31T19:51:49-07:00",
+            "transit": "2026-08-31T13:09:24-07:00",
+            "civilTwilightBegin": "2026-08-31T05:55:07-07:00",
+            "civilTwilightEnd": "2026-08-31T20:23:42-07:00",
+            "nauticalTwilightBegin": "2026-08-31T05:16:22-07:00",
+            "nauticalTwilightEnd": "2026-08-31T21:02:27-07:00",
+            "astronomicalTwilightBegin": "2026-08-31T04:34:40-07:00",
+            "astronomicalTwilightEnd": "2026-08-31T21:44:09-07:00"
+          },
+          "nwr": {
+            "transmitter": "KHB60",
+            "sameCode": "053033",
+            "areaBroadcast": "https://api.weather.gov/radio/KHB60/broadcast",
+            "pointBroadcast": "https://api.weather.gov/points/47.6,-122.3/radio"
+          }
+        }
+      }
+2026-08-31T17:48:08.661Z:9268:[SENT] HTTPS request GET https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true HTTP/1.1
+    Headers:
+      Host: api.open-meteo.com
+      User-Agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      Accept-Encoding: gzip
+2026-08-31T17:48:08.828Z:9268:[RECEIVED] HTTPS response 200 OK for https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true
+    Headers:
+      Date: Mon, 31 Aug 2026 17:48:07 GMT
+      Content-Type: application/json; charset=utf-8
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      Content-Encoding: gzip
+    Body (application/json; charset=utf-8):
+      {
+        "latitude": 47.60265,
+        "longitude": -122.28637,
+        "generationtime_ms": 0.10037422180175781,
+        "utc_offset_seconds": 0,
+        "timezone": "GMT",
+        "timezone_abbreviation": "GMT",
+        "elevation": 93.0,
+        "current_weather_units": {
+          "time": "iso8601",
+          "interval": "seconds",
+          "temperature": "°C",
+          "windspeed": "km/h",
+          "winddirection": "°",
+          "is_day": "",
+          "weathercode": "wmo code"
+        },
+        "current_weather": {
+          "time": "2026-08-31T17:45",
+          "interval": 900,
+          "temperature": 17.7,
+          "windspeed": 8.4,
+          "winddirection": 31,
+          "is_day": 1,
+          "weathercode": 0
+        }
+      }
+2026-08-31T17:48:09.840Z:7112:DNS lookup to "api.weather.gov"
+2026-08-31T17:48:09.840Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.213
+2026-08-31T17:48:09.840Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.207
+2026-08-31T17:48:09.840Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.210
+2026-08-31T17:48:09.840Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.208
+2026-08-31T17:48:09.840Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.205
+2026-08-31T17:48:09.840Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.215
+2026-08-31T17:48:09.840Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.202
+2026-08-31T17:48:09.840Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.198
+2026-08-31T17:48:15.595Z:6644:process started with command "C:\WINDOWS\uus\AMD64\MoUsoCoreWorker.exe" useprivatenamespaces
+2026-08-31T17:48:18.630Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:48:23.308Z:7112:[SENT] HTTPS request GET https://api.weather.gov/points/47.6,-122.3 HTTP/2
+    Headers:
+      user-agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      accept-encoding: gzip
+2026-08-31T17:48:23.424Z:7112:[RECEIVED] HTTPS response 200 for https://api.weather.gov/points/47.6,-122.3
+    Headers:
+      server: nginx/1.28.3
+      content-type: application/geo+json
+      access-control-allow-origin: *
+      access-control-expose-headers: X-Correlation-Id, X-Request-Id, X-Server-Id
+      x-request-id: 01a05867-0268-78e0-9c9a-9d90891be1c6
+      x-correlation-id: 352d8e51
+      x-server-id: vm-bldr-api-ops-app1.ncep.noaa.gov
+      content-encoding: gzip
+      content-length: 1009
+      cache-control: public, max-age=77439, s-maxage=120
+      expires: Tue, 01 Sep 2026 15:19:01 GMT
+      date: Mon, 31 Aug 2026 17:48:22 GMT
+      vary: Accept-Encoding
+      x-edge-request-id: a28afb3b
+      vary: Accept,Feature-Flags,Accept-Language
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+    Body (application/geo+json):
+      {
+        "@context": [
+          "https://geojson.org/geojson-ld/geojson-context.jsonld",
+          {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "s": "https://schema.org/",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#",
+            "geometry": {
+              "@id": "s:GeoCoordinates",
+              "@type": "geo:wktLiteral"
+            },
+            "city": "s:addressLocality",
+            "state": "s:addressRegion",
+            "distance": {
+              "@id": "s:Distance",
+              "@type": "s:QuantitativeValue"
+            },
+            "bearing": {
+              "@type": "s:QuantitativeValue"
+            },
+            "value": {
+              "@id": "s:value"
+            },
+            "unitCode": {
+              "@id": "s:unitCode",
+              "@type": "@id"
+            },
+            "forecastOffice": {
+              "@type": "@id"
+            },
+            "forecastGridData": {
+              "@type": "@id"
+            },
+            "publicZone": {
+              "@type": "@id"
+            },
+            "county": {
+              "@type": "@id"
+            }
+          }
+        ],
+        "id": "https://api.weather.gov/points/47.6,-122.3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3,
+            47.6
+          ]
+        },
+        "properties": {
+          "@id": "https://api.weather.gov/points/47.6,-122.3",
+          "@type": "wx:Point",
+          "cwa": "SEW",
+          "type": "land",
+          "forecastOffice": "https://api.weather.gov/offices/SEW",
+          "gridId": "SEW",
+          "gridX": 126,
+          "gridY": 68,
+          "forecast": "https://api.weather.gov/gridpoints/SEW/126,68/forecast",
+          "forecastHourly": "https://api.weather.gov/gridpoints/SEW/126,68/forecast/hourly",
+          "forecastGridData": "https://api.weather.gov/gridpoints/SEW/126,68",
+          "observationStations": "https://api.weather.gov/gridpoints/SEW/126,68/stations",
+          "relativeLocation": {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -122.3515382,
+                47.6193352
+              ]
+            },
+            "properties": {
+              "city": "Seattle",
+              "state": "WA",
+              "distance": {
+                "unitCode": "wmoUnit:m",
+                "value": 0
+              },
+              "bearing": {
+                "unitCode": "wmoUnit:degree_(angle)",
+                "value": 0
+              }
+            }
+          },
+          "forecastZone": "https://api.weather.gov/zones/forecast/WAZ315",
+          "county": "https://api.weather.gov/zones/county/WAC033",
+          "fireWeatherZone": "https://api.weather.gov/zones/fire/WAZ654",
+          "timeZone": "America/Los_Angeles",
+          "radarStation": "KATX",
+          "astronomicalData": {
+            "sunrise": "2026-08-31T06:27:00-07:00",
+            "sunset": "2026-08-31T19:51:49-07:00",
+            "transit": "2026-08-31T13:09:24-07:00",
+            "civilTwilightBegin": "2026-08-31T05:55:07-07:00",
+            "civilTwilightEnd": "2026-08-31T20:23:42-07:00",
+            "nauticalTwilightBegin": "2026-08-31T05:16:22-07:00",
+            "nauticalTwilightEnd": "2026-08-31T21:02:27-07:00",
+            "astronomicalTwilightBegin": "2026-08-31T04:34:40-07:00",
+            "astronomicalTwilightEnd": "2026-08-31T21:44:09-07:00"
+          },
+          "nwr": {
+            "transmitter": "KHB60",
+            "sameCode": "053033",
+            "areaBroadcast": "https://api.weather.gov/radio/KHB60/broadcast",
+            "pointBroadcast": "https://api.weather.gov/points/47.6,-122.3/radio"
+          }
+        }
+      }
+2026-08-31T17:48:23.832Z:9268:[SENT] HTTPS request GET https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true HTTP/1.1
+    Headers:
+      Host: api.open-meteo.com
+      User-Agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      Accept-Encoding: gzip
+2026-08-31T17:48:24.002Z:9268:[RECEIVED] HTTPS response 200 OK for https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true
+    Headers:
+      Date: Mon, 31 Aug 2026 17:48:22 GMT
+      Content-Type: application/json; charset=utf-8
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      Content-Encoding: gzip
+    Body (application/json; charset=utf-8):
+      {
+        "latitude": 47.60265,
+        "longitude": -122.28637,
+        "generationtime_ms": 0.11897087097167969,
+        "utc_offset_seconds": 0,
+        "timezone": "GMT",
+        "timezone_abbreviation": "GMT",
+        "elevation": 93.0,
+        "current_weather_units": {
+          "time": "iso8601",
+          "interval": "seconds",
+          "temperature": "°C",
+          "windspeed": "km/h",
+          "winddirection": "°",
+          "is_day": "",
+          "weathercode": "wmo code"
+        },
+        "current_weather": {
+          "time": "2026-08-31T17:45",
+          "interval": 900,
+          "temperature": 17.7,
+          "windspeed": 8.4,
+          "winddirection": 31,
+          "is_day": 1,
+          "weathercode": 0
+        }
+      }
+2026-08-31T17:48:24.847Z:7112:DNS lookup to "api.weather.gov"
+2026-08-31T17:48:24.847Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.200
+2026-08-31T17:48:24.847Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.206
+2026-08-31T17:48:24.847Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.210
+2026-08-31T17:48:24.847Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.208
+2026-08-31T17:48:24.847Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.199
+2026-08-31T17:48:38.429Z:7112:[SENT] HTTPS request GET https://api.weather.gov/points/47.6,-122.3 HTTP/2
+    Headers:
+      user-agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      accept-encoding: gzip
+2026-08-31T17:48:38.510Z:7112:[RECEIVED] HTTPS response 200 for https://api.weather.gov/points/47.6,-122.3
+    Headers:
+      server: nginx/1.28.3
+      content-type: application/geo+json
+      access-control-allow-origin: *
+      access-control-expose-headers: X-Correlation-Id, X-Request-Id, X-Server-Id
+      x-request-id: 01a05867-0268-78e0-9c9a-9d90891be1c6
+      x-correlation-id: 352d8e51
+      x-server-id: vm-bldr-api-ops-app1.ncep.noaa.gov
+      content-encoding: gzip
+      content-length: 1009
+      cache-control: public, max-age=77424, s-maxage=120
+      expires: Tue, 01 Sep 2026 15:19:01 GMT
+      date: Mon, 31 Aug 2026 17:48:37 GMT
+      vary: Accept-Encoding
+      x-edge-request-id: a28c079c
+      vary: Accept,Feature-Flags,Accept-Language
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+    Body (application/geo+json):
+      {
+        "@context": [
+          "https://geojson.org/geojson-ld/geojson-context.jsonld",
+          {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "s": "https://schema.org/",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#",
+            "geometry": {
+              "@id": "s:GeoCoordinates",
+              "@type": "geo:wktLiteral"
+            },
+            "city": "s:addressLocality",
+            "state": "s:addressRegion",
+            "distance": {
+              "@id": "s:Distance",
+              "@type": "s:QuantitativeValue"
+            },
+            "bearing": {
+              "@type": "s:QuantitativeValue"
+            },
+            "value": {
+              "@id": "s:value"
+            },
+            "unitCode": {
+              "@id": "s:unitCode",
+              "@type": "@id"
+            },
+            "forecastOffice": {
+              "@type": "@id"
+            },
+            "forecastGridData": {
+              "@type": "@id"
+            },
+            "publicZone": {
+              "@type": "@id"
+            },
+            "county": {
+              "@type": "@id"
+            }
+          }
+        ],
+        "id": "https://api.weather.gov/points/47.6,-122.3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3,
+            47.6
+          ]
+        },
+        "properties": {
+          "@id": "https://api.weather.gov/points/47.6,-122.3",
+          "@type": "wx:Point",
+          "cwa": "SEW",
+          "type": "land",
+          "forecastOffice": "https://api.weather.gov/offices/SEW",
+          "gridId": "SEW",
+          "gridX": 126,
+          "gridY": 68,
+          "forecast": "https://api.weather.gov/gridpoints/SEW/126,68/forecast",
+          "forecastHourly": "https://api.weather.gov/gridpoints/SEW/126,68/forecast/hourly",
+          "forecastGridData": "https://api.weather.gov/gridpoints/SEW/126,68",
+          "observationStations": "https://api.weather.gov/gridpoints/SEW/126,68/stations",
+          "relativeLocation": {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -122.3515382,
+                47.6193352
+              ]
+            },
+            "properties": {
+              "city": "Seattle",
+              "state": "WA",
+              "distance": {
+                "unitCode": "wmoUnit:m",
+                "value": 0
+              },
+              "bearing": {
+                "unitCode": "wmoUnit:degree_(angle)",
+                "value": 0
+              }
+            }
+          },
+          "forecastZone": "https://api.weather.gov/zones/forecast/WAZ315",
+          "county": "https://api.weather.gov/zones/county/WAC033",
+          "fireWeatherZone": "https://api.weather.gov/zones/fire/WAZ654",
+          "timeZone": "America/Los_Angeles",
+          "radarStation": "KATX",
+          "astronomicalData": {
+            "sunrise": "2026-08-31T06:27:00-07:00",
+            "sunset": "2026-08-31T19:51:49-07:00",
+            "transit": "2026-08-31T13:09:24-07:00",
+            "civilTwilightBegin": "2026-08-31T05:55:07-07:00",
+            "civilTwilightEnd": "2026-08-31T20:23:42-07:00",
+            "nauticalTwilightBegin": "2026-08-31T05:16:22-07:00",
+            "nauticalTwilightEnd": "2026-08-31T21:02:27-07:00",
+            "astronomicalTwilightBegin": "2026-08-31T04:34:40-07:00",
+            "astronomicalTwilightEnd": "2026-08-31T21:44:09-07:00"
+          },
+          "nwr": {
+            "transmitter": "KHB60",
+            "sameCode": "053033",
+            "areaBroadcast": "https://api.weather.gov/radio/KHB60/broadcast",
+            "pointBroadcast": "https://api.weather.gov/points/47.6,-122.3/radio"
+          }
+        }
+      }
+2026-08-31T17:48:39.006Z:9268:[SENT] HTTPS request GET https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true HTTP/1.1
+    Headers:
+      Host: api.open-meteo.com
+      User-Agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      Accept-Encoding: gzip
+2026-08-31T17:48:39.174Z:9268:[RECEIVED] HTTPS response 200 OK for https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true
+    Headers:
+      Date: Mon, 31 Aug 2026 17:48:38 GMT
+      Content-Type: application/json; charset=utf-8
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      Content-Encoding: gzip
+    Body (application/json; charset=utf-8):
+      {
+        "latitude": 47.60265,
+        "longitude": -122.28637,
+        "generationtime_ms": 0.13399124145507812,
+        "utc_offset_seconds": 0,
+        "timezone": "GMT",
+        "timezone_abbreviation": "GMT",
+        "elevation": 93.0,
+        "current_weather_units": {
+          "time": "iso8601",
+          "interval": "seconds",
+          "temperature": "°C",
+          "windspeed": "km/h",
+          "winddirection": "°",
+          "is_day": "",
+          "weathercode": "wmo code"
+        },
+        "current_weather": {
+          "time": "2026-08-31T17:45",
+          "interval": 900,
+          "temperature": 17.7,
+          "windspeed": 8.4,
+          "winddirection": 31,
+          "is_day": 1,
+          "weathercode": 0
+        }
+      }
+2026-08-31T17:48:39.830Z:7112:DNS lookup to "api.weather.gov"
+2026-08-31T17:48:39.830Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.199
+2026-08-31T17:48:39.830Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.200
+2026-08-31T17:48:39.830Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.206
+2026-08-31T17:48:39.830Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.210
+2026-08-31T17:48:39.830Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.208
+2026-08-31T17:48:45.997Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:48:46.755Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:48:53.516Z:7112:[SENT] HTTPS request GET https://api.weather.gov/points/47.6,-122.3 HTTP/2
+    Headers:
+      user-agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      accept-encoding: gzip
+2026-08-31T17:48:53.596Z:7112:[RECEIVED] HTTPS response 200 for https://api.weather.gov/points/47.6,-122.3
+    Headers:
+      server: nginx/1.28.3
+      content-type: application/geo+json
+      access-control-allow-origin: *
+      access-control-expose-headers: X-Correlation-Id, X-Request-Id, X-Server-Id
+      x-request-id: 01a05867-0268-78e0-9c9a-9d90891be1c6
+      x-correlation-id: 352d8e51
+      x-server-id: vm-bldr-api-ops-app1.ncep.noaa.gov
+      content-encoding: gzip
+      content-length: 1009
+      cache-control: public, max-age=77409, s-maxage=120
+      expires: Tue, 01 Sep 2026 15:19:01 GMT
+      date: Mon, 31 Aug 2026 17:48:52 GMT
+      vary: Accept-Encoding
+      x-edge-request-id: a28d12de
+      vary: Accept,Feature-Flags,Accept-Language
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+    Body (application/geo+json):
+      {
+        "@context": [
+          "https://geojson.org/geojson-ld/geojson-context.jsonld",
+          {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "s": "https://schema.org/",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#",
+            "geometry": {
+              "@id": "s:GeoCoordinates",
+              "@type": "geo:wktLiteral"
+            },
+            "city": "s:addressLocality",
+            "state": "s:addressRegion",
+            "distance": {
+              "@id": "s:Distance",
+              "@type": "s:QuantitativeValue"
+            },
+            "bearing": {
+              "@type": "s:QuantitativeValue"
+            },
+            "value": {
+              "@id": "s:value"
+            },
+            "unitCode": {
+              "@id": "s:unitCode",
+              "@type": "@id"
+            },
+            "forecastOffice": {
+              "@type": "@id"
+            },
+            "forecastGridData": {
+              "@type": "@id"
+            },
+            "publicZone": {
+              "@type": "@id"
+            },
+            "county": {
+              "@type": "@id"
+            }
+          }
+        ],
+        "id": "https://api.weather.gov/points/47.6,-122.3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3,
+            47.6
+          ]
+        },
+        "properties": {
+          "@id": "https://api.weather.gov/points/47.6,-122.3",
+          "@type": "wx:Point",
+          "cwa": "SEW",
+          "type": "land",
+          "forecastOffice": "https://api.weather.gov/offices/SEW",
+          "gridId": "SEW",
+          "gridX": 126,
+          "gridY": 68,
+          "forecast": "https://api.weather.gov/gridpoints/SEW/126,68/forecast",
+          "forecastHourly": "https://api.weather.gov/gridpoints/SEW/126,68/forecast/hourly",
+          "forecastGridData": "https://api.weather.gov/gridpoints/SEW/126,68",
+          "observationStations": "https://api.weather.gov/gridpoints/SEW/126,68/stations",
+          "relativeLocation": {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -122.3515382,
+                47.6193352
+              ]
+            },
+            "properties": {
+              "city": "Seattle",
+              "state": "WA",
+              "distance": {
+                "unitCode": "wmoUnit:m",
+                "value": 0
+              },
+              "bearing": {
+                "unitCode": "wmoUnit:degree_(angle)",
+                "value": 0
+              }
+            }
+          },
+          "forecastZone": "https://api.weather.gov/zones/forecast/WAZ315",
+          "county": "https://api.weather.gov/zones/county/WAC033",
+          "fireWeatherZone": "https://api.weather.gov/zones/fire/WAZ654",
+          "timeZone": "America/Los_Angeles",
+          "radarStation": "KATX",
+          "astronomicalData": {
+            "sunrise": "2026-08-31T06:27:00-07:00",
+            "sunset": "2026-08-31T19:51:49-07:00",
+            "transit": "2026-08-31T13:09:24-07:00",
+            "civilTwilightBegin": "2026-08-31T05:55:07-07:00",
+            "civilTwilightEnd": "2026-08-31T20:23:42-07:00",
+            "nauticalTwilightBegin": "2026-08-31T05:16:22-07:00",
+            "nauticalTwilightEnd": "2026-08-31T21:02:27-07:00",
+            "astronomicalTwilightBegin": "2026-08-31T04:34:40-07:00",
+            "astronomicalTwilightEnd": "2026-08-31T21:44:09-07:00"
+          },
+          "nwr": {
+            "transmitter": "KHB60",
+            "sameCode": "053033",
+            "areaBroadcast": "https://api.weather.gov/radio/KHB60/broadcast",
+            "pointBroadcast": "https://api.weather.gov/points/47.6,-122.3/radio"
+          }
+        }
+      }
+2026-08-31T17:48:54.178Z:9268:[SENT] HTTPS request GET https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true HTTP/1.1
+    Headers:
+      Host: api.open-meteo.com
+      User-Agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      Accept-Encoding: gzip
+2026-08-31T17:48:54.345Z:9268:[RECEIVED] HTTPS response 200 OK for https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true
+    Headers:
+      Date: Mon, 31 Aug 2026 17:48:53 GMT
+      Content-Type: application/json; charset=utf-8
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      Content-Encoding: gzip
+    Body (application/json; charset=utf-8):
+      {
+        "latitude": 47.60265,
+        "longitude": -122.28637,
+        "generationtime_ms": 0.13947486877441406,
+        "utc_offset_seconds": 0,
+        "timezone": "GMT",
+        "timezone_abbreviation": "GMT",
+        "elevation": 93.0,
+        "current_weather_units": {
+          "time": "iso8601",
+          "interval": "seconds",
+          "temperature": "°C",
+          "windspeed": "km/h",
+          "winddirection": "°",
+          "is_day": "",
+          "weathercode": "wmo code"
+        },
+        "current_weather": {
+          "time": "2026-08-31T17:45",
+          "interval": 900,
+          "temperature": 17.7,
+          "windspeed": 8.4,
+          "winddirection": 31,
+          "is_day": 1,
+          "weathercode": 0
+        }
+      }
+2026-08-31T17:48:54.851Z:7112:DNS lookup to "api.weather.gov"
+2026-08-31T17:48:54.851Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.200
+2026-08-31T17:48:54.851Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.214
+2026-08-31T17:48:54.851Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.199
+2026-08-31T17:48:54.851Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.213
+2026-08-31T17:48:54.851Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.196
+2026-08-31T17:48:54.851Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.202
+2026-08-31T17:48:54.851Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.218
+2026-08-31T17:48:54.851Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.203
+2026-08-31T17:48:54.851Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.215
+2026-08-31T17:48:58.908Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:49:08.602Z:7112:[SENT] HTTPS request GET https://api.weather.gov/points/47.6,-122.3 HTTP/2
+    Headers:
+      user-agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      accept-encoding: gzip
+2026-08-31T17:49:08.686Z:7112:[RECEIVED] HTTPS response 200 for https://api.weather.gov/points/47.6,-122.3
+    Headers:
+      server: nginx/1.28.3
+      content-type: application/geo+json
+      access-control-allow-origin: *
+      access-control-expose-headers: X-Correlation-Id, X-Request-Id, X-Server-Id
+      x-request-id: 01a05867-0268-78e0-9c9a-9d90891be1c6
+      x-correlation-id: 352d8e51
+      x-server-id: vm-bldr-api-ops-app1.ncep.noaa.gov
+      content-encoding: gzip
+      content-length: 1009
+      cache-control: public, max-age=77394, s-maxage=120
+      expires: Tue, 01 Sep 2026 15:19:01 GMT
+      date: Mon, 31 Aug 2026 17:49:07 GMT
+      vary: Accept-Encoding
+      x-edge-request-id: a28e1801
+      vary: Accept,Feature-Flags,Accept-Language
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+    Body (application/geo+json):
+      {
+        "@context": [
+          "https://geojson.org/geojson-ld/geojson-context.jsonld",
+          {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "s": "https://schema.org/",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#",
+            "geometry": {
+              "@id": "s:GeoCoordinates",
+              "@type": "geo:wktLiteral"
+            },
+            "city": "s:addressLocality",
+            "state": "s:addressRegion",
+            "distance": {
+              "@id": "s:Distance",
+              "@type": "s:QuantitativeValue"
+            },
+            "bearing": {
+              "@type": "s:QuantitativeValue"
+            },
+            "value": {
+              "@id": "s:value"
+            },
+            "unitCode": {
+              "@id": "s:unitCode",
+              "@type": "@id"
+            },
+            "forecastOffice": {
+              "@type": "@id"
+            },
+            "forecastGridData": {
+              "@type": "@id"
+            },
+            "publicZone": {
+              "@type": "@id"
+            },
+            "county": {
+              "@type": "@id"
+            }
+          }
+        ],
+        "id": "https://api.weather.gov/points/47.6,-122.3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3,
+            47.6
+          ]
+        },
+        "properties": {
+          "@id": "https://api.weather.gov/points/47.6,-122.3",
+          "@type": "wx:Point",
+          "cwa": "SEW",
+          "type": "land",
+          "forecastOffice": "https://api.weather.gov/offices/SEW",
+          "gridId": "SEW",
+          "gridX": 126,
+          "gridY": 68,
+          "forecast": "https://api.weather.gov/gridpoints/SEW/126,68/forecast",
+          "forecastHourly": "https://api.weather.gov/gridpoints/SEW/126,68/forecast/hourly",
+          "forecastGridData": "https://api.weather.gov/gridpoints/SEW/126,68",
+          "observationStations": "https://api.weather.gov/gridpoints/SEW/126,68/stations",
+          "relativeLocation": {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -122.3515382,
+                47.6193352
+              ]
+            },
+            "properties": {
+              "city": "Seattle",
+              "state": "WA",
+              "distance": {
+                "unitCode": "wmoUnit:m",
+                "value": 0
+              },
+              "bearing": {
+                "unitCode": "wmoUnit:degree_(angle)",
+                "value": 0
+              }
+            }
+          },
+          "forecastZone": "https://api.weather.gov/zones/forecast/WAZ315",
+          "county": "https://api.weather.gov/zones/county/WAC033",
+          "fireWeatherZone": "https://api.weather.gov/zones/fire/WAZ654",
+          "timeZone": "America/Los_Angeles",
+          "radarStation": "KATX",
+          "astronomicalData": {
+            "sunrise": "2026-08-31T06:27:00-07:00",
+            "sunset": "2026-08-31T19:51:49-07:00",
+            "transit": "2026-08-31T13:09:24-07:00",
+            "civilTwilightBegin": "2026-08-31T05:55:07-07:00",
+            "civilTwilightEnd": "2026-08-31T20:23:42-07:00",
+            "nauticalTwilightBegin": "2026-08-31T05:16:22-07:00",
+            "nauticalTwilightEnd": "2026-08-31T21:02:27-07:00",
+            "astronomicalTwilightBegin": "2026-08-31T04:34:40-07:00",
+            "astronomicalTwilightEnd": "2026-08-31T21:44:09-07:00"
+          },
+          "nwr": {
+            "transmitter": "KHB60",
+            "sameCode": "053033",
+            "areaBroadcast": "https://api.weather.gov/radio/KHB60/broadcast",
+            "pointBroadcast": "https://api.weather.gov/points/47.6,-122.3/radio"
+          }
+        }
+      }
+2026-08-31T17:49:09.348Z:9268:[SENT] HTTPS request GET https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true HTTP/1.1
+    Headers:
+      Host: api.open-meteo.com
+      User-Agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      Accept-Encoding: gzip
+2026-08-31T17:49:09.514Z:9268:[RECEIVED] HTTPS response 200 OK for https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true
+    Headers:
+      Date: Mon, 31 Aug 2026 17:49:08 GMT
+      Content-Type: application/json; charset=utf-8
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      Content-Encoding: gzip
+    Body (application/json; charset=utf-8):
+      {
+        "latitude": 47.60265,
+        "longitude": -122.28637,
+        "generationtime_ms": 0.12314319610595703,
+        "utc_offset_seconds": 0,
+        "timezone": "GMT",
+        "timezone_abbreviation": "GMT",
+        "elevation": 93.0,
+        "current_weather_units": {
+          "time": "iso8601",
+          "interval": "seconds",
+          "temperature": "°C",
+          "windspeed": "km/h",
+          "winddirection": "°",
+          "is_day": "",
+          "weathercode": "wmo code"
+        },
+        "current_weather": {
+          "time": "2026-08-31T17:45",
+          "interval": 900,
+          "temperature": 17.7,
+          "windspeed": 8.4,
+          "winddirection": 31,
+          "is_day": 1,
+          "weathercode": 0
+        }
+      }
+2026-08-31T17:49:09.841Z:7112:DNS lookup to "api.weather.gov"
+2026-08-31T17:49:09.841Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.215
+2026-08-31T17:49:09.841Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.200
+2026-08-31T17:49:09.841Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.214
+2026-08-31T17:49:09.841Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.199
+2026-08-31T17:49:09.841Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.213
+2026-08-31T17:49:09.841Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.196
+2026-08-31T17:49:09.841Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.202
+2026-08-31T17:49:09.841Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.218
+2026-08-31T17:49:09.841Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.203
+2026-08-31T17:49:23.691Z:7112:[SENT] HTTPS request GET https://api.weather.gov/points/47.6,-122.3 HTTP/2
+    Headers:
+      user-agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      accept-encoding: gzip
+2026-08-31T17:49:23.774Z:7112:[RECEIVED] HTTPS response 200 for https://api.weather.gov/points/47.6,-122.3
+    Headers:
+      server: nginx/1.28.3
+      content-type: application/geo+json
+      access-control-allow-origin: *
+      access-control-expose-headers: X-Correlation-Id, X-Request-Id, X-Server-Id
+      x-request-id: 01a05867-0268-78e0-9c9a-9d90891be1c6
+      x-correlation-id: 352d8e51
+      x-server-id: vm-bldr-api-ops-app1.ncep.noaa.gov
+      content-encoding: gzip
+      content-length: 1009
+      cache-control: public, max-age=77379, s-maxage=120
+      expires: Tue, 01 Sep 2026 15:19:01 GMT
+      date: Mon, 31 Aug 2026 17:49:22 GMT
+      vary: Accept-Encoding
+      x-edge-request-id: a28f20ed
+      vary: Accept,Feature-Flags,Accept-Language
+      strict-transport-security: max-age=31536000 ; includeSubDomains ; preload
+    Body (application/geo+json):
+      {
+        "@context": [
+          "https://geojson.org/geojson-ld/geojson-context.jsonld",
+          {
+            "@version": "1.1",
+            "wx": "https://api.weather.gov/ontology#",
+            "s": "https://schema.org/",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#",
+            "geometry": {
+              "@id": "s:GeoCoordinates",
+              "@type": "geo:wktLiteral"
+            },
+            "city": "s:addressLocality",
+            "state": "s:addressRegion",
+            "distance": {
+              "@id": "s:Distance",
+              "@type": "s:QuantitativeValue"
+            },
+            "bearing": {
+              "@type": "s:QuantitativeValue"
+            },
+            "value": {
+              "@id": "s:value"
+            },
+            "unitCode": {
+              "@id": "s:unitCode",
+              "@type": "@id"
+            },
+            "forecastOffice": {
+              "@type": "@id"
+            },
+            "forecastGridData": {
+              "@type": "@id"
+            },
+            "publicZone": {
+              "@type": "@id"
+            },
+            "county": {
+              "@type": "@id"
+            }
+          }
+        ],
+        "id": "https://api.weather.gov/points/47.6,-122.3",
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3,
+            47.6
+          ]
+        },
+        "properties": {
+          "@id": "https://api.weather.gov/points/47.6,-122.3",
+          "@type": "wx:Point",
+          "cwa": "SEW",
+          "type": "land",
+          "forecastOffice": "https://api.weather.gov/offices/SEW",
+          "gridId": "SEW",
+          "gridX": 126,
+          "gridY": 68,
+          "forecast": "https://api.weather.gov/gridpoints/SEW/126,68/forecast",
+          "forecastHourly": "https://api.weather.gov/gridpoints/SEW/126,68/forecast/hourly",
+          "forecastGridData": "https://api.weather.gov/gridpoints/SEW/126,68",
+          "observationStations": "https://api.weather.gov/gridpoints/SEW/126,68/stations",
+          "relativeLocation": {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [
+                -122.3515382,
+                47.6193352
+              ]
+            },
+            "properties": {
+              "city": "Seattle",
+              "state": "WA",
+              "distance": {
+                "unitCode": "wmoUnit:m",
+                "value": 0
+              },
+              "bearing": {
+                "unitCode": "wmoUnit:degree_(angle)",
+                "value": 0
+              }
+            }
+          },
+          "forecastZone": "https://api.weather.gov/zones/forecast/WAZ315",
+          "county": "https://api.weather.gov/zones/county/WAC033",
+          "fireWeatherZone": "https://api.weather.gov/zones/fire/WAZ654",
+          "timeZone": "America/Los_Angeles",
+          "radarStation": "KATX",
+          "astronomicalData": {
+            "sunrise": "2026-08-31T06:27:00-07:00",
+            "sunset": "2026-08-31T19:51:49-07:00",
+            "transit": "2026-08-31T13:09:24-07:00",
+            "civilTwilightBegin": "2026-08-31T05:55:07-07:00",
+            "civilTwilightEnd": "2026-08-31T20:23:42-07:00",
+            "nauticalTwilightBegin": "2026-08-31T05:16:22-07:00",
+            "nauticalTwilightEnd": "2026-08-31T21:02:27-07:00",
+            "astronomicalTwilightBegin": "2026-08-31T04:34:40-07:00",
+            "astronomicalTwilightEnd": "2026-08-31T21:44:09-07:00"
+          },
+          "nwr": {
+            "transmitter": "KHB60",
+            "sameCode": "053033",
+            "areaBroadcast": "https://api.weather.gov/radio/KHB60/broadcast",
+            "pointBroadcast": "https://api.weather.gov/points/47.6,-122.3/radio"
+          }
+        }
+      }
+2026-08-31T17:49:24.519Z:9268:[SENT] HTTPS request GET https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true HTTP/1.1
+    Headers:
+      Host: api.open-meteo.com
+      User-Agent: sysmon-observability-test/1.0 (local test harness; non-production)
+      Accept-Encoding: gzip
+2026-08-31T17:49:24.686Z:9268:[RECEIVED] HTTPS response 200 OK for https://api.open-meteo.com/v1/forecast?latitude=47.6&longitude=-122.3&current_weather=true
+    Headers:
+      Date: Mon, 31 Aug 2026 17:49:23 GMT
+      Content-Type: application/json; charset=utf-8
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      Content-Encoding: gzip
+    Body (application/json; charset=utf-8):
+      {
+        "latitude": 47.60265,
+        "longitude": -122.28637,
+        "generationtime_ms": 0.14126300811767578,
+        "utc_offset_seconds": 0,
+        "timezone": "GMT",
+        "timezone_abbreviation": "GMT",
+        "elevation": 93.0,
+        "current_weather_units": {
+          "time": "iso8601",
+          "interval": "seconds",
+          "temperature": "°C",
+          "windspeed": "km/h",
+          "winddirection": "°",
+          "is_day": "",
+          "weathercode": "wmo code"
+        },
+        "current_weather": {
+          "time": "2026-08-31T17:45",
+          "interval": 900,
+          "temperature": 17.7,
+          "windspeed": 8.4,
+          "winddirection": 31,
+          "is_day": 1,
+          "weathercode": 0
+        }
+      }
+2026-08-31T17:49:24.860Z:7112:DNS lookup to "api.weather.gov"
+2026-08-31T17:49:24.860Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.198
+2026-08-31T17:49:24.860Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.208
+2026-08-31T17:49:24.860Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.204
+2026-08-31T17:49:24.860Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.212
+2026-08-31T17:49:24.860Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.210
+2026-08-31T17:49:24.860Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.200
+2026-08-31T17:49:24.860Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.215
+2026-08-31T17:49:24.860Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.196
+2026-08-31T17:49:24.860Z:7112:DNS api.weather.gov resolved to IP address 23.216.149.213
+2026-08-31T17:49:27.039Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:49:27.039Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:49:38.472Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:50:07.376Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp
+2026-08-31T17:50:07.376Z:5344:process "svchost.exe" connected to 192.168.68.206/7680 with protocol tcp

@@ -10,6 +10,7 @@ package main
 
 import (
 	"context"
+	"crypto/tls"
 	"flag"
 	"fmt"
 	"net"
@@ -18,6 +19,24 @@ import (
 	"os"
 	"time"
 )
+
+// newHTTPClient builds an http.Client that, when SSLKEYLOGFILE is set, logs
+// the TLS session secrets for each connection so a capture of this process's
+// traffic can be decrypted later (e.g. in Wireshark/tshark).
+func newHTTPClient() *http.Client {
+	transport := http.DefaultTransport.(*http.Transport).Clone()
+
+	if keylogPath := os.Getenv("SSLKEYLOGFILE"); keylogPath != "" {
+		f, err := os.OpenFile(keylogPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0600)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "warning: could not open SSLKEYLOGFILE %q: %v\n", keylogPath, err)
+		} else {
+			transport.TLSClientConfig = &tls.Config{KeyLogWriter: f}
+		}
+	}
+
+	return &http.Client{Timeout: 10 * time.Second, Transport: transport}
+}
 
 func main() {
 	name := flag.String("name", "agent", "agent identifier for logging")
@@ -36,7 +55,7 @@ func main() {
 
 	fmt.Printf("[%s pid=%d] starting, target host=%s duration=%s interval=%s\n", *name, pid, host, *duration, *interval)
 
-	client := &http.Client{Timeout: 10 * time.Second}
+	client := newHTTPClient()
 	deadline := time.Now().Add(*duration)
 	iteration := 0
 
